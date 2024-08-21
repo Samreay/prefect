@@ -15825,6 +15825,17 @@
                         ],
                         "description": "Filter criteria for `Deployment.paused`"
                     },
+                    "disabled": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/DeploymentFilterDisabled"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Filter criteria for `Deployment.disabled`"
+                    },
                     "tags": {
                         "anyOf": [
                             {
@@ -15907,6 +15918,26 @@
                 "type": "object",
                 "title": "DeploymentFilterConcurrencyLimit",
                 "description": "Filter by `Deployment.concurrency_limit`."
+            },
+            "DeploymentFilterDisabled": {
+                "properties": {
+                    "eq_": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Eq ",
+                        "description": "Only returns where deployment is/is not disabled"
+                    }
+                },
+                "additionalProperties": false,
+                "type": "object",
+                "title": "DeploymentFilterDisabled",
+                "description": "Filter by `Deployment.disabled`."
             },
             "DeploymentFilterId": {
                 "properties": {
@@ -16793,7 +16824,8 @@
                 "type": "string",
                 "enum": [
                     "READY",
-                    "NOT_READY"
+                    "NOT_READY",
+                    "DISABLED"
                 ],
                 "title": "DeploymentStatus",
                 "description": "Enumeration of deployment statuses."
